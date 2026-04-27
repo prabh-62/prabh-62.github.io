@@ -1,16 +1,35 @@
-## Hi there 👋
+# Hi, I'm Prabhdeep Singh Batth
 
-<!--
-**prabh-62/prabh-62** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Senior Software Engineer focused on full-stack product development, distributed systems, and architecture.
 
-Here are some ideas to get you started:
+- LinkedIn: [linkedin.com/in/prabh62](https://www.linkedin.com/in/prabh62/)
+- GitHub: [github.com/prabh-62](https://github.com/prabh-62)
+- Location: Whitby, ON
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Resume Site
+
+This repository also contains my React + Vite resume website.
+
+### Tech stack
+
+React, TypeScript, Vite, Tailwind CSS, Base UI
+
+### Run locally
+
+```bash
+npm ci
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+npm run preview
+```
+
+### Deploy (GitHub Pages)
+
+A Pages workflow is included at `.github/workflows/pages.yml`.
+
+If this is deployed as a project site (`https://<user>.github.io/<repo>/`), set `base` in `vite.config.ts` to `"/<repo>/"`.
