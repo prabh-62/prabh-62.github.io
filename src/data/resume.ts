@@ -218,7 +218,7 @@ export const education = {
   program:
     "Computer Systems Technology",
   school: "Sheridan Institute of Technology and Advanced Learning",
-  where: "Toronto, ON",
+  where: "Brampton, ON",
   dates: "Sep 2013 – Dec 2016",
   programPageHref:
     "https://www.sheridancollege.ca/programs/computer-systems-technology-software-development-and-network-engineering",

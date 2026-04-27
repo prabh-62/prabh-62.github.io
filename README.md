@@ -17,7 +17,7 @@ React, TypeScript, Vite, Tailwind CSS, Base UI
 ### Run locally
 
 ```bash
-npm ci
+npm install
 npm run dev
 ```
 
