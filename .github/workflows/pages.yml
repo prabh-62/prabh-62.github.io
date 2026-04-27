@@ -1,6 +1,4 @@
-# Use this workflow when the Git repository root is this `web/` directory.
-# (Monorepos can keep a separate workflow at the parent repo with `working-directory: web`.)
-
+# GitHub Pages: build Vite `dist/` and deploy via upload-pages-artifact.
 name: pages
 
 on:
@@ -21,14 +19,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      - run: npm install
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
   deploy:
@@ -39,4 +37,4 @@ jobs:
       url: ${{ steps.d.outputs.page_url }}
     steps:
       - id: d
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
