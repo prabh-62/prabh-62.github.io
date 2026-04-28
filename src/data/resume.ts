@@ -48,6 +48,8 @@ export type ProductCallout = {
   description: string
   imageSrc?: string
   imageAlt?: string
+  diagramSrc?: string
+  diagramAlt?: string
   links?: readonly { label: string; href: string }[]
   gallery?: {
     before: ProductGallerySlot
@@ -126,6 +128,9 @@ const synergizeProduct: ProductCallout = {
     "Document management and workflow UIs in the Synergize stack—browser-based access to repository search, workflows, and batch operations",
   imageSrc: "/experiences/microdea/synergize-explorer.png",
   imageAlt: "Synergize Explorer HTML5 interface",
+  diagramSrc: "/experiences/microdea/synergize-microservices.svg",
+  diagramAlt:
+    "Synergize microservices architecture diagram: services, APIs, and data flow",
   links: [
     {
       label: "Documentation",
@@ -197,22 +202,49 @@ export const experience = [
     dates: "Jan 2017 – Apr 2017",
     product: ontarioInsideOpsProduct,
     items: [
-      "Wrote frontend code for the Ontario Intranet website (intra.ontario.ca).",
+      {
+        before: "Wrote frontend code for the ",
+        link: {
+          href: "https://intra.ontario.ca/",
+          label: "Ontario Intranet website",
+        },
+        after: ".",
+      },
       "Developed a conversation bot to automate various Scrum tasks.",
       "Reported issues with the intranet website’s performance and proposed solutions to make the web application more performant.",
     ],
   },
 ] as const
 
-export const projects = [
+/** Optional screenshots or product imagery for a project (paths under /public). */
+export type ProjectMedia = {
+  src: string
+  alt: string
+  label?: string
+}
+
+export type Project = {
+  name: string
+  items: readonly string[]
+  media?: readonly ProjectMedia[]
+}
+
+export const projects: readonly Project[] = [
   {
     name: "Ticketing Web Application",
     items: [
-      "Managed over $15,000 in ticket sales for an event using a Stripe backend.",
+      "Managed over $15K in ticket sales for an event using a Stripe backend(2.9% fees).",
       "Automated volunteer registration using Firebase Functions and Google Sheets.",
     ],
+    media: [
+      {
+        src: "/projects/ticketing/big-city-bhangra.webp",
+        alt: "Big City Bhangra event app — mobile ticket purchase and information page",
+        label: "Event site",
+      },
+    ],
   },
-] as const
+]
 
 export const education = {
   program:

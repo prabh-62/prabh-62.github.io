@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ArrowUpRight, MapPin } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -5,9 +6,14 @@ import { community } from "@/data/spotlight"
 import { education as resumeEducation } from "@/data/resume"
 import { cn } from "@/lib/utils"
 
+import { ImageLightbox } from "./ImageLightbox"
 import { SectionHeading } from "./SectionHeading"
 
 export function EducationSection() {
+  const [lightbox, setLightbox] = useState<{
+    src: string
+    alt: string
+  } | null>(null)
   const educationWhere = resumeEducation.where.replace(" - ", " · ")
 
   return (
@@ -63,20 +69,26 @@ export function EducationSection() {
                       During my studies
                     </p>
                     <div className="flex flex-col overflow-hidden rounded-md border border-border/60 sm:flex-row sm:items-stretch">
-                      <a
-                        href={community.mlh.href}
-                        rel="noreferrer"
-                        target="_blank"
-                        className="focus-visible:ring-ring relative block h-28 w-full shrink-0 focus-visible:z-10 focus-visible:ring-2 focus-visible:outline-none sm:h-auto sm:w-40 sm:min-h-[7.5rem]"
+                      <button
+                        type="button"
+                        className="focus-visible:ring-ring relative block h-28 w-full shrink-0 cursor-zoom-in border-0 bg-transparent p-0 focus-visible:z-10 focus-visible:ring-2 focus-visible:outline-none sm:h-auto sm:w-40 sm:min-h-[7.5rem]"
+                        onClick={() =>
+                          setLightbox({
+                            src: community.mlh.imageSrc,
+                            alt: community.mlh.imageAlt,
+                          })
+                        }
+                        aria-label={`View full size: ${community.mlh.title}`}
                       >
                         <img
                           src={community.mlh.imageSrc}
-                          alt={community.mlh.imageAlt}
-                          className="h-full w-full object-cover"
+                          alt=""
+                          className="pointer-events-none h-full w-full object-cover"
                           loading="lazy"
                           decoding="async"
+                          aria-hidden
                         />
-                      </a>
+                      </button>
                       <div className="min-w-0 flex-1 px-3 py-3 sm:px-4 sm:py-3.5">
                         <h3 className="text-sm font-semibold leading-snug text-[#1a365d]">
                           {community.mlh.title}
@@ -108,6 +120,10 @@ export function EducationSection() {
           </div>
         </CardContent>
       </Card>
+      <ImageLightbox
+        open={lightbox}
+        onDismiss={() => setLightbox(null)}
+      />
     </section>
   )
 }
