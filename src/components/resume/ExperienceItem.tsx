@@ -1,12 +1,12 @@
 import { MapPin } from "lucide-react"
 
-import { experience } from "@/data/resume"
+import { experience, type ProductCallout } from "@/data/resume"
 import { formatEmploymentDuration } from "@/lib/utils"
 
 import { ExperienceBulletLine } from "./ExperienceBulletLine"
 import { ExperienceProductCallout } from "./ExperienceProductCallout"
 
-type Job = (typeof experience)[number]
+type Job = (typeof experience)[number] & { secondaryProduct?: ProductCallout }
 
 type ExperienceItemProps = {
   job: Job

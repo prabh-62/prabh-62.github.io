@@ -6,6 +6,8 @@ export const profile = {
   githubLabel: "github.com/prabh-62",
   githubHref: "https://github.com/prabh-62",
   location: "Whitby, ON",
+  email: "prabh070@gmail.com",
+  resumeHref: "/resume_prabhdeep.pdf",
 }
 
 export const summary =
@@ -162,9 +164,9 @@ const synergizeProduct: ProductCallout = {
 
 export const experience = [
   {
-    title: "Senior Developer",
+    title: "Senior Software Developer",
     company: "Condo Control (Property Control)",
-    where: "Toronto, ON - Remote",
+    where: "Toronto, ON - Hybrid",
     dates: "Aug 2024 – Aug 2026",
     product: propertyControlProduct,
     items: [
@@ -186,9 +188,8 @@ export const experience = [
     title: "Software Architect",
     company: "Transflo",
     where: "Tampa, FL - Remote",
-    dates: "Oct 2021 – Jul 2024",
-    product: transfloOneProduct,
-    secondaryProduct: transfloWorkflowAiProduct,
+    dates: "Oct 2022 – Jul 2024",
+    product: transfloWorkflowAiProduct,
     items: [
       {
         before:
@@ -202,7 +203,7 @@ export const experience = [
       },
       {
         before:
-          "Led the distributed microservices architecture — an Angular front end on a CloudFront/S3 static site I proposed, a .NET BFF aggregating the workflow, loads, document, and imaging APIs, domain events over SQS and SNS, Lambda, and Redis caching — and deployed the Windows-based imaging service on Amazon EKS, which App Runner cannot host — ",
+          "Led the distributed microservices architecture — an Angular front end on a CloudFront/S3 static site I proposed, a .NET BFF aggregating the workflow, loads, document, and imaging APIs, domain events over SQS and SNS, Lambda, and Redis caching — ",
         diagram: {
           src: "/experiences/transflo/workflow-ai-architecture.jpg",
           alt: "Workflow AI architecture: browser to CloudFront and an S3 static site, through a BFF on AWS App Runner, fanning out to the Carrier Freight Workflow API, TMS Loads API, Synergize API on IIS, and an Imaging API on Amazon EKS, with Redis and SQL Server behind them",
@@ -222,15 +223,25 @@ export const experience = [
       "Ran technical sessions on Angular and ASP.NET Core best practices and gave actionable code review feedback across the team, reducing recurring bugs.",
       "Hired and onboarded six offshore engineers, cutting pull-request review cycles from roughly five rounds to near zero by front-loading codebase context into ticket handoffs.",
       "Increased the productivity of the development team by moving backend and frontend source code to git monorepo saving hundreds of dev hours.",
-      "Created and maintained several CI/CD pipelines in Azure DevOps using task groups and regular updates to underlying build tools.",
       "Organized and documented production deployments using AWS CDK (Infrastructure as Code) and followed up on post deployment issues.",
     ],
   },
   {
     title: "Senior Software Engineer",
+    company: "Transflo",
+    where: "Tampa, FL - Remote",
+    dates: "Oct 2020 – Oct 2022",
+    product: transfloOneProduct,
+    items: [
+      "Built the Transflo OnePortal Angular app shell on shared monorepo libraries, giving every portal UI one look and single sign-on.",
+      "Created and maintained several CI/CD pipelines in Azure DevOps using task groups and regular updates to underlying build tools.",
+    ],
+  },
+  {
+    title: "Software Engineer",
     company: "Microdea",
     where: "Markham, ON",
-    dates: "May 2017 – Oct 2021",
+    dates: "May 2017 – Oct 2020",
     product: synergizeProduct,
     items: [
       "Created and maintained several UI applications built with the latest version of Angular while reusing code through TypeScript libraries.",
@@ -299,10 +310,10 @@ export const projects: readonly Project[] = [
 ]
 
 export const education = {
-  program: "Computer Systems Technology",
+  program: "Computer Software Engineering",
   school: "Sheridan Institute of Technology and Advanced Learning",
   where: "Brampton, ON",
-  dates: "Sep 2013 – Dec 2016",
+  dates: "Sep 2013 – Apr 2017",
   programPageHref:
     "https://www.sheridancollege.ca/programs/computer-systems-technology-software-development-and-network-engineering",
 }

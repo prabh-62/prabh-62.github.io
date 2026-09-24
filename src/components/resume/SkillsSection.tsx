@@ -1,4 +1,5 @@
 import { type ComponentType } from "react"
+import { SiDotnet, SiKubernetes, SiNewrelic, SiRabbitmq, SiRedis, SiTeamcity } from "react-icons/si"
 import {
   TbBrandAngular,
   TbBrandAws,
@@ -7,7 +8,10 @@ import {
   TbBrandDocker,
   TbBrandReact,
   TbBrandTypescript,
+  TbDatabase,
+  TbSql,
 } from "react-icons/tb"
+import { VscAzureDevops } from "react-icons/vsc"
 
 import { Badge } from "@/components/ui/badge"
 import { skillGroups } from "@/data/resume"
@@ -16,12 +20,28 @@ import { SectionHeading } from "./SectionHeading"
 
 const skillIcons: Record<string, ComponentType<{ className?: string }>> = {
   "C#": TbBrandCSharp,
+  ".NET": SiDotnet,
+  "EF Core": SiDotnet,
   TypeScript: TbBrandTypescript,
   React: TbBrandReact,
   Angular: TbBrandAngular,
   Azure: TbBrandAzure,
   AWS: TbBrandAws,
   Docker: TbBrandDocker,
+  "Amazon EKS": SiKubernetes,
+  Redis: SiRedis,
+  CloudFront: TbBrandAws,
+  MSSQL: TbDatabase,
+  "SQL Profiler": TbSql,
+  "Azure AI Search": TbBrandAzure,
+  "Azure Application Insights": TbBrandAzure,
+  "New Relic": SiNewrelic,
+  TeamCity: SiTeamcity,
+  "Azure DevOps": VscAzureDevops,
+  "AWS SNS": TbBrandAws,
+  "AWS SQS": TbBrandAws,
+  RabbitMQ: SiRabbitmq,
+  "AWS CDK": TbBrandAws,
 }
 
 function SkillIcon({ name }: { name: string }) {
