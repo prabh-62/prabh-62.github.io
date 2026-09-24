@@ -1,16 +1,43 @@
 import { MapPin } from "lucide-react"
 
-import { experience, type ProductCallout } from "@/data/resume"
+import { experience, type ExperienceBullet, type ProductCallout } from "@/data/resume"
 import { formatEmploymentDuration } from "@/lib/utils"
 
 import { ExperienceBulletLine } from "./ExperienceBulletLine"
 import { ExperienceProductCallout } from "./ExperienceProductCallout"
 
-type Job = (typeof experience)[number] & { secondaryProduct?: ProductCallout }
+type Job = (typeof experience)[number]
+
+type RoleContent = {
+  items: readonly ExperienceBullet[]
+  product?: ProductCallout
+  secondaryProduct?: ProductCallout
+}
 
 type ExperienceItemProps = {
   job: Job
   isLast: boolean
+}
+
+function RoleBody({ role, keyPrefix }: { role: RoleContent; keyPrefix: string }) {
+  return (
+    <>
+      <ul className="m-0 mt-3 list-outside list-disc space-y-2 pl-4 text-sm leading-relaxed sm:text-base">
+        {role.items.map((b, bulletIndex) => (
+          <li
+            key={`${keyPrefix}-${bulletIndex}`}
+            className="pl-0.5 marker:font-normal marker:text-[#1a365d]"
+          >
+            <ExperienceBulletLine bullet={b} />
+          </li>
+        ))}
+      </ul>
+      {role.product && <ExperienceProductCallout product={role.product} className="mt-4" />}
+      {role.secondaryProduct && (
+        <ExperienceProductCallout product={role.secondaryProduct} className="mt-3" />
+      )}
+    </>
+  )
 }
 
 export function ExperienceItem({ job, isLast }: ExperienceItemProps) {
@@ -48,25 +75,46 @@ export function ExperienceItem({ job, isLast }: ExperienceItemProps) {
                 className="bg-[#1a365d] ring-background absolute top-1.5 left-0 z-10 h-2.5 w-2.5 -translate-x-1/2 rounded-full ring-2 sm:hidden"
                 aria-hidden
               />
-              <h3 className="m-0 text-base font-semibold text-[#1a365d] sm:text-lg">{job.title}</h3>
-              <p className="m-0 mt-1 text-sm font-medium leading-snug text-[#3182ce]">
-                {job.company}
-              </p>
-              <ul className="m-0 mt-3 list-outside list-disc space-y-2 pl-4 text-sm leading-relaxed sm:text-base">
-                {job.items.map((b, bulletIndex) => (
-                  <li
-                    key={`${job.company}-${job.dates}-${bulletIndex}`}
-                    className="pl-0.5 marker:font-normal marker:text-[#1a365d]"
-                  >
-                    <ExperienceBulletLine bullet={b} />
-                  </li>
-                ))}
-              </ul>
-              {"product" in job && job.product && (
-                <ExperienceProductCallout product={job.product} className="mt-4" />
-              )}
-              {"secondaryProduct" in job && job.secondaryProduct && (
-                <ExperienceProductCallout product={job.secondaryProduct} className="mt-3" />
+              {"roles" in job ? (
+                <>
+                  <h3 className="m-0 text-base font-semibold text-[#1a365d] sm:text-lg">
+                    {job.company}
+                  </h3>
+                  <ol className="m-0 mt-4 list-none space-y-7 p-0">
+                    {job.roles.map((role) => {
+                      const roleDuration = formatEmploymentDuration(role.dates)
+                      return (
+                        <li
+                          key={`${job.company}-${role.dates}`}
+                          className="relative border-l-2 border-[#3182ce]/35 pl-4"
+                        >
+                          <span
+                            className="absolute top-2 -left-[5px] h-2 w-2 rounded-full bg-[#3182ce]"
+                            aria-hidden
+                          />
+                          <h4 className="m-0 text-base font-semibold text-[#1a365d]">
+                            {role.title}
+                          </h4>
+                          <p className="m-0 mt-0.5 text-xs text-muted-foreground sm:text-sm">
+                            {role.dates}
+                            {roleDuration && ` · ${roleDuration}`}
+                          </p>
+                          <RoleBody role={role} keyPrefix={`${job.company}-${role.dates}`} />
+                        </li>
+                      )
+                    })}
+                  </ol>
+                </>
+              ) : (
+                <>
+                  <h3 className="m-0 text-base font-semibold text-[#1a365d] sm:text-lg">
+                    {job.title}
+                  </h3>
+                  <p className="m-0 mt-1 text-sm font-medium leading-snug text-[#3182ce]">
+                    {job.company}
+                  </p>
+                  <RoleBody role={job} keyPrefix={`${job.company}-${job.dates}`} />
+                </>
               )}
             </div>
           </div>

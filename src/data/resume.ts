@@ -185,56 +185,59 @@ export const experience = [
     ],
   },
   {
-    title: "Software Architect",
     company: "Transflo",
     where: "Tampa, FL - Remote",
-    dates: "Oct 2022 – Jul 2024",
-    product: transfloWorkflowAiProduct,
-    items: [
+    dates: "Oct 2020 – Jul 2024",
+    roles: [
       {
-        before:
-          "Architected and delivered Workflow AI, an end-to-end document automation product for trucking carriers: load paperwork from the mobile app, email, and scanning stations runs through an OCR extraction pipeline and returns over AWS SQS to .NET Lambda handlers that flag discrepancies for back-office review — ",
-        diagram: {
-          src: "/experiences/transflo/workflow-ai-document-flow.jpg",
-          alt: "Document flow: load paperwork arriving from email, the mobile app, and scanning stations, passing through Hyperscience OCR extraction, and landing in the Workflow AI load review queue",
-          label: "view document flow",
-        },
-        after: ".",
+        title: "Software Architect",
+        dates: "Oct 2022 – Jul 2024",
+        product: transfloWorkflowAiProduct,
+        items: [
+          {
+            before:
+              "Architected and delivered Workflow AI, an end-to-end document automation product for trucking carriers: load paperwork from the mobile app, email, and scanning stations runs through an OCR extraction pipeline and returns over AWS SQS to .NET Lambda handlers that flag discrepancies for back-office review — ",
+            diagram: {
+              src: "/experiences/transflo/workflow-ai-document-flow.jpg",
+              alt: "Document flow: load paperwork arriving from email, the mobile app, and scanning stations, passing through Hyperscience OCR extraction, and landing in the Workflow AI load review queue",
+              label: "view document flow",
+            },
+            after: ".",
+          },
+          {
+            before:
+              "Led the distributed microservices architecture — an Angular front end on a CloudFront/S3 static site I proposed, a .NET BFF aggregating the workflow, loads, document, and imaging APIs, domain events over SQS and SNS, Lambda, and Redis caching — ",
+            diagram: {
+              src: "/experiences/transflo/workflow-ai-architecture.jpg",
+              alt: "Workflow AI architecture: browser to CloudFront and an S3 static site, through a BFF on AWS App Runner, fanning out to the Carrier Freight Workflow API, TMS Loads API, Synergize API on IIS, and an Imaging API on Amazon EKS, with Redis and SQL Server behind them",
+              label: "view architecture",
+            },
+            after: ".",
+          },
+          {
+            before: "Acted as a glue between ",
+            link: {
+              href: "https://www.linkedin.com/posts/briansowul_automation-ai-teamwork-activity-7121296799801245698-Uy9L/",
+              label: "product and technical teams",
+            },
+            after:
+              ", streamlining requirements and designs and pushing back against partially thought-out product features.",
+          },
+          "Ran technical sessions on Angular and ASP.NET Core best practices and gave actionable code review feedback across the team, reducing recurring bugs.",
+          "Hired and onboarded six offshore engineers, cutting pull-request review cycles from roughly five rounds to near zero by front-loading codebase context into ticket handoffs.",
+          "Increased the productivity of the development team by moving backend and frontend source code to git monorepo saving hundreds of dev hours.",
+          "Organized and documented production deployments using AWS CDK (Infrastructure as Code) and followed up on post deployment issues.",
+        ],
       },
       {
-        before:
-          "Led the distributed microservices architecture — an Angular front end on a CloudFront/S3 static site I proposed, a .NET BFF aggregating the workflow, loads, document, and imaging APIs, domain events over SQS and SNS, Lambda, and Redis caching — ",
-        diagram: {
-          src: "/experiences/transflo/workflow-ai-architecture.jpg",
-          alt: "Workflow AI architecture: browser to CloudFront and an S3 static site, through a BFF on AWS App Runner, fanning out to the Carrier Freight Workflow API, TMS Loads API, Synergize API on IIS, and an Imaging API on Amazon EKS, with Redis and SQL Server behind them",
-          label: "view architecture",
-        },
-        after: ".",
+        title: "Senior Software Engineer",
+        dates: "Oct 2020 – Oct 2022",
+        product: transfloOneProduct,
+        items: [
+          "Built the Transflo OnePortal Angular app shell on shared monorepo libraries, giving every portal UI one look and single sign-on.",
+          "Created and maintained several CI/CD pipelines in Azure DevOps using task groups and regular updates to underlying build tools.",
+        ],
       },
-      {
-        before: "Acted as a glue between ",
-        link: {
-          href: "https://www.linkedin.com/posts/briansowul_automation-ai-teamwork-activity-7121296799801245698-Uy9L/",
-          label: "product and technical teams",
-        },
-        after:
-          ", streamlining requirements and designs and pushing back against partially thought-out product features.",
-      },
-      "Ran technical sessions on Angular and ASP.NET Core best practices and gave actionable code review feedback across the team, reducing recurring bugs.",
-      "Hired and onboarded six offshore engineers, cutting pull-request review cycles from roughly five rounds to near zero by front-loading codebase context into ticket handoffs.",
-      "Increased the productivity of the development team by moving backend and frontend source code to git monorepo saving hundreds of dev hours.",
-      "Organized and documented production deployments using AWS CDK (Infrastructure as Code) and followed up on post deployment issues.",
-    ],
-  },
-  {
-    title: "Senior Software Engineer",
-    company: "Transflo",
-    where: "Tampa, FL - Remote",
-    dates: "Oct 2020 – Oct 2022",
-    product: transfloOneProduct,
-    items: [
-      "Built the Transflo OnePortal Angular app shell on shared monorepo libraries, giving every portal UI one look and single sign-on.",
-      "Created and maintained several CI/CD pipelines in Azure DevOps using task groups and regular updates to underlying build tools.",
     ],
   },
   {
