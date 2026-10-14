@@ -13,37 +13,6 @@ export const profile = {
 export const summary =
   "Senior software engineer with 9+ years building and modernizing enterprise .NET and cloud systems. Most recently shipped a production RAG platform — Azure AI Search, .NET 9, React 19 — for a multi-tenant property management product; previously architected distributed microservices on AWS and delivered an end-to-end document automation product for the trucking industry. Comfortable owning a system from architecture through production and monitoring, and bridging product and engineering."
 
-export const skillGroups = [
-  {
-    category: "Languages & Frameworks",
-    items: ["C#", ".NET", "EF Core", "TypeScript", "React", "Angular"],
-  },
-  {
-    category: "Cloud & Data",
-    items: ["Azure", "AWS", "Docker", "Amazon EKS", "Redis", "CloudFront", "MSSQL", "SQL Profiler"],
-  },
-  {
-    category: "AI & Search",
-    items: ["Azure AI Search", "RAG Pipelines", "Vector Search", "LLM Integration"],
-  },
-  {
-    category: "Observability",
-    items: ["Azure Application Insights", "New Relic"],
-  },
-  {
-    category: "Practices",
-    items: [
-      "Systems Design",
-      { label: "CI/CD", tools: ["TeamCity", "Azure DevOps"] },
-      {
-        label: "Message Queue",
-        tools: ["AWS SNS", "AWS SQS", "RabbitMQ"],
-      },
-      { label: "IaC", tools: ["AWS CDK"] },
-    ],
-  },
-] as const
-
 type ProductGallerySlot = {
   src: string
   label: string
@@ -173,7 +142,7 @@ export const experience = [
       "Built and shipped the product's RAG chat platform end to end: a React 19 interface on Vercel AI Elements backed by a .NET 9 API that runs parallel vector searches across Azure AI Search and composes cited answers from the top-ranked chunks.",
       {
         before:
-          "Closed a silent-failure gap in ingestion where password-protected and macro-enabled files were skipped without any signal — roughly 3,000 of 27,000 documents across nearly 200 tenants were invisible to search, so customers received confident answers that omitted their own files. Built an event-driven status pipeline giving every document a durable, queryable index status per tenant, with the Azure Function authenticating via managed identity so no database credential sits in the serverless tier — ",
+          "Closed a silent-failure gap in ingestion where password-protected and macro-enabled files were skipped without any signal — roughly 3,000 of 27,000 documents across nearly 200 tenants were invisible to search, so customers received confident answers that omitted their own files. Designed an event-driven status pipeline (knowledge store projections → Event Grid → Azure Function → SQL Server) so documents that failed to index are surfaced in the UI, with the Azure Function authenticating via managed identity so no database credential sits in the serverless tier — ",
         diagram: {
           src: "/experiences/condocontrol/azure-search-indexer-pipeline.png",
           alt: "Azure Search Indexer pipeline: S3 to Blob, indexed search, and knowledge-store status tracking via Event Grid and Azure Functions",
@@ -311,6 +280,15 @@ export const projects: readonly Project[] = [
     ],
   },
 ]
+
+export const courses = [
+  {
+    name: "The AI-native SDLC playbook",
+    provider: "Claude Academy",
+    year: "2026",
+    href: "https://academy.claude.com/courses/ai-native-sdlc-playbook",
+  },
+] as const
 
 export const education = {
   program: "Computer Software Engineering",

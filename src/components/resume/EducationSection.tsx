@@ -3,7 +3,7 @@ import { ArrowUpRight, MapPin } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
 import { community } from "@/data/spotlight"
-import { education as resumeEducation } from "@/data/resume"
+import { courses, education as resumeEducation } from "@/data/resume"
 import { cn } from "@/lib/utils"
 
 import { ImageLightbox } from "./ImageLightbox"
@@ -114,6 +114,30 @@ export function EducationSection() {
           </div>
         </CardContent>
       </Card>
+      <div className="mt-4">
+        <p className="text-muted-foreground text-[0.65rem] font-medium tracking-wide uppercase">
+          Courses
+        </p>
+        <ul className="m-0 mt-1.5 list-none space-y-1 p-0">
+          {courses.map((course) => (
+            <li key={course.href} className="text-sm">
+              <a
+                className="inline-flex items-center gap-0.5 font-medium text-[#3182ce] hover:underline"
+                href={course.href}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {course.name}
+                <ArrowUpRight className="size-3.5 shrink-0" aria-hidden />
+              </a>
+              <span className="text-muted-foreground">
+                {" "}
+                · {course.provider} · {course.year}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
       <ImageLightbox open={lightbox} onDismiss={() => setLightbox(null)} />
     </section>
   )

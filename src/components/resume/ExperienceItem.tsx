@@ -1,10 +1,12 @@
 import { MapPin } from "lucide-react"
 
 import { experience, type ExperienceBullet, type ProductCallout } from "@/data/resume"
+import { companyKey, toolsAt } from "@/data/stack"
 import { formatEmploymentDuration } from "@/lib/utils"
 
 import { ExperienceBulletLine } from "./ExperienceBulletLine"
 import { ExperienceProductCallout } from "./ExperienceProductCallout"
+import { StackChip } from "./StackChip"
 
 type Job = (typeof experience)[number]
 
@@ -37,6 +39,20 @@ function RoleBody({ role, keyPrefix }: { role: RoleContent; keyPrefix: string })
         <ExperienceProductCallout product={role.secondaryProduct} className="mt-3" />
       )}
     </>
+  )
+}
+
+function JobStack({ company }: { company: string }) {
+  const key = companyKey(company)
+  if (!key) return null
+  const tools = toolsAt(key)
+  if (tools.length === 0) return null
+  return (
+    <div className="mt-2 flex flex-wrap gap-1.5" aria-label={`Tech stack at ${key}`}>
+      {tools.map((tool) => (
+        <StackChip key={tool.name} tool={tool} />
+      ))}
+    </div>
   )
 }
 
@@ -80,6 +96,7 @@ export function ExperienceItem({ job, isLast }: ExperienceItemProps) {
                   <h3 className="m-0 text-base font-semibold text-[#1a365d] sm:text-lg">
                     {job.company}
                   </h3>
+                  <JobStack company={job.company} />
                   <ol className="m-0 mt-4 list-none space-y-7 p-0">
                     {job.roles.map((role) => {
                       const roleDuration = formatEmploymentDuration(role.dates)
@@ -113,6 +130,7 @@ export function ExperienceItem({ job, isLast }: ExperienceItemProps) {
                   <p className="m-0 mt-1 text-sm font-medium leading-snug text-[#3182ce]">
                     {job.company}
                   </p>
+                  <JobStack company={job.company} />
                   <RoleBody role={job} keyPrefix={`${job.company}-${job.dates}`} />
                 </>
               )}
